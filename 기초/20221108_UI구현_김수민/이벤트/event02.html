@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 5000px;
+        }
+        #container{
+            width: 1000px;
+            height: 500px;
+            background: beige;
+        }
+        #box{
+            width: 100px;
+            height: 100px;
+            background: orange;
+            position: absolute;
+            left: 0;
+            top: 0;
+            border-radius: 50%;
+            transition: 0.1s;
+        }
+        p{
+            position: fixed;
+            background: black;
+            width: 200px;
+            height: 80px;
+            right: 50px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <div id="box"></div>
+    <p></p>
+    <script>
+
+        let div = document.querySelector("#container");
+        let box = document.querySelector("#box");
+        let p = document.querySelector("p");
+
+        div.addEventListener('click',function(e){
+            let x= e.pageX;
+            let y= e.pageY;
+            box.style.left = x-50 +"px";
+            box.style.top = y-50 +"px";
+        })
+
+
+        window.addEventListener('scroll',function(e){
+            let scrollT = document.documentElement.scrollTop;
+            document.querySelector("p").innerHTML = scrollT;
+
+            if(scrollT>500){
+                document.querySelector("body").style.background ="red";
+            }else {
+                document.body.style.background = "beige";
+            }
+        })
+
+        p.addEventListener('click',function(){
+            window.scrollTo({top:500, behavior:"smooth"});
+        })
+
+    </script>
+</body>
+</html>

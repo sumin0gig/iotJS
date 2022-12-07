@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+        사용자로부터 입력을 받아서
+        값이 숫자면 다시 입력받기
+        문자거나 입력을 하지 않으면 반복문을 빠져나가기
+        */
+
+        // let num = prompt("숫자를 입력하세요");
+        // while(num == Number(num)){
+        //     if(num == false){
+        //         break;
+        //     }
+        //     num = prompt("숫자를 $ 입력하세요")
+        // }
+
+        // while(true){
+        //     let userInput = prompt("숫자를 입력해주세요");
+        //     if (!userInput || isNaN(Number(userInput))){
+        //         break;
+        //     }
+        // }
+
+        /*
+        1~10까지 숫자 중 홀수만 출력하기
+        */
+       for(let i=1;i<10;i++){ // i가 10 미만이라면 1씩 더하며 반복한다.
+        if(i%2){ //만약 i를 2로 나눈 값이 1이라면(=홀수라면)
+            console.log(i); //console.log에 작성한다.
+        }
+       }
+
+    </script>
+    
+    
+
+
+</body>
+</html>

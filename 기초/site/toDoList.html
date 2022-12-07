@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    *{margin: 0; padding: 0; box-sizing: border-box;}
+    li{list-style: none;}
+    body{
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    #header{
+      background: linear-gradient(90deg,pink,skyblue);
+      color: #fff;
+      height: 20vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    h1{
+      text-align: center;
+      line-height: 50px;
+    }
+    .btns{
+      width: 80%;
+    }
+    .btns > button{
+      background: #fff;
+      font-size: 0;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      transform: translateY(-4px);
+    }
+    #put{
+      width: 90%;
+      border: none;
+      border-radius: 50px;
+      line-height: 50px;
+      font-size: 25px;
+      margin-right: 10px;
+      padding-left:50px;
+    }
+
+    ul{
+      width: 80%;
+      margin: 0 auto;
+      background: orange;
+    }
+    li{
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 50px;
+    }
+
+    button{
+      border: none;
+      font-size: 20px;
+      background: none;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div id="header">
+      <h1>To do List</h1>
+      <div class="btns">
+        <input type="text" id="put">
+        <button onclick="newLi()">click</button>
+      </div>
+    </div>
+
+    <ul></ul>
+  </div>
+</body>
+
+<script>
+
+  const input = document.querySelector("#put");
+  const ul = document.querySelector("ul");
+
+  function newLi(){
+    let li=document.createElement("li")
+    let v = document.createTextNode(input.value);
+    let btn=document.createElement("button")
+    let x = document.createTextNode("X");
+    li.appendChild(v);
+    btn.appendChild(x)
+    li.appendChild(btn)
+    ul.appendChild(li);
+  }
+  
+  let 
+
+  
+</script>
+</html>

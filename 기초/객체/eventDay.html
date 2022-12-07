@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin: 0; padding: 0; box-sizing: border-box;}
+    #wrap{
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      border: 1px solid pink;
+      border-radius: 35px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      height: 500px;
+    }
+    header{
+      background: pink;
+      padding: 30px;
+      border-radius: 35px 35px 0 0;
+      color: #fff;
+      height: 30%;
+    }
+    h2{
+      font-weight: normal;
+    }
+
+    #container{
+      text-align: center;
+      display: flex;
+      align-items: center;
+      height: 70%;
+      justify-content: space-around;
+      flex-direction: column;
+    }
+    input{
+      border: none;
+      border-bottom: 1px solid pink;
+      outline: none;
+      font-size: 20px;
+      width: 25%;
+      padding: 5px;
+    }
+    .btns{
+      width: 100%;
+    }
+    button{
+      border: none;
+      border-radius: 15px;
+      outline: none;
+      background: pink;
+      height: 50px;
+      width: 20%;
+      margin: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <header>
+      <h1>기념일</h1>
+      <h2>사귄 날짜를 입력하세요.</h2>
+    </header>
+    <div id="container">
+      <div class="inputs">
+        <input type="text" id="year"/>
+        <input type="text" id="month"/>
+        <input type="text" id="day"/>
+      </div>
+      <div class="btns">
+        <button onclick="whatDay(50)">50일은?</button>
+        <button onclick="whatDay(100)">100일은?</button>
+        <button onclick="dayCount()">오늘은 몇일째?</button>
+      </div>
+      <div class="announce">
+        우리가 만난 일수는?
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  let year= document.querySelector("#year");
+  let month= document.querySelector("#month");
+  let day= document.querySelector("#day");
+  const announce= document.querySelector(".announce")
+
+  function whatDay(dayUp){
+    let date1= new Date(Number(year.value), Number(month.value-1), Number(day.value));
+    date1.setDate(dayUp);
+    announce.innerHTML= `우리가 만난지 ${dayUp}일째 되는 날은 ${date1.toLocaleDateString()}입니다.`;
+  }
+  function dayCount(){
+    let date1= new Date(year.value, month.value-1, day.value).getTime();
+    let date2= new Date().getTime();
+    let date3= Math.floor((date2-date1)/(1000*60*60*24))
+    announce.innerHTML= `우리가 만난지는 ${date3+1}일 입니다.`;
+  }
+</script>
+</html>

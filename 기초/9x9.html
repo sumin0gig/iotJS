@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul></ul>
+  <script>
+
+    let str =""
+    for (let i = 2; i < 10; i++) {
+      str= str+`<li>
+        <h3>${i}단 입니다.</h3>
+        <ul>`
+      for (let j = 0; j < 10; j++) {
+        str= str+`<li>${i}*${j}=${i*j}</li>`
+      }
+      str= str+`</ul></li>`
+    }
+    
+      document.querySelector("ul").innerHTML = str
+
+  </script>
+</body>
+</html>

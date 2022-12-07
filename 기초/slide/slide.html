@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin: 0; padding: 0; box-sizing: border-box;}
+    body{
+      width: 100%;
+      height: 100vh;
+    }
+    #wrap{
+      width: 100%;
+      height: 100vh;
+    }
+    #imgview{
+      width: 600px;
+      height: 400px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      overflow: hidden;
+    }
+    #imgDivs{
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 400%;
+      display: flex;
+      transition: .5s;
+    }
+    #imgDivs div{
+      width: 25%;
+    }
+    .btn{
+      width: 80px;
+      height: 80px;
+      background: tomato;
+      color: #fff;
+      line-height: 80px;
+      text-align: center;
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      cursor: pointer;
+    }
+    #nextbtn{
+      transform: translate(320px,-50%);
+    }
+    #prevbtn{
+      transform: translate(-400px,-50%);
+    }
+    #indi{
+      position: absolute;
+      bottom: 50%;
+      transform: translateY(190px);
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+    }
+    #indi span{
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background-color: tomato;
+      border-radius: 50%;
+      margin: 0 3px;
+      font-size: 0;
+    }
+    #indi span.on{
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div id="imgview"> <!-- overflow hidden이 들어갈 객체 -->
+      <div id="imgDivs">
+        <div class="imgdiv"><img src="./images/img_lights1.jpg" alt=""></div>
+        <div class="imgdiv"><img src="./images/img_lights2.jpg" alt=""></div>
+        <div class="imgdiv"><img src="./images/img_lights3.jpg" alt=""></div>
+        <div class="imgdiv"><img src="./images/img_lights4.jpg" alt=""></div> 
+      </div>
+    </div>
+    <div id="prevbtn" class="btn">이전</div>
+    <div id="nextbtn" class="btn">다음</div>
+    <div id="indi">
+      
+    </div>
+  </div>
+
+  <script>
+  let imgDivs= document.querySelector("#imgDivs");
+  let timer; //setInterver
+  let current= 0; //현재 보이는 div 번호
+  let next= 0; //imgDivs의 left 값
+  let spanStr= "";
+  const prevbtn =document.querySelector("#prevbtn");
+  const nextbtn =document.querySelector("#nextbtn");
+  const imgs = document.querySelectorAll(".imgdiv");
+  let lastIndex= imgs.length-1;
+  const indiDiv= document.querySelector("#indi");
+
+  //indigator
+  imgs.forEach((v,i)=>{
+    spanStr= spanStr + `<span>${i}</span>`;
+  })
+  indiDiv.innerHTML = spanStr;
+  const indiBtn =document.querySelectorAll("span");
+
+  indiBtn.forEach((v,i)=>{
+    v.addEventListener("click",function(){
+      indiBtn.forEach(v=>v.classList.remove("on"))
+      moveDiv(i);
+      v.classList.add("on");
+    })
+  })
+
+  indiBtn.addEventListener("mouseenter",function(){
+    stopIt();
+  })
+  indiBtn.addEventListener("mouseleave",function(){
+    startIt();
+  })
+  
+
+
+  //이전버튼 클릭했을 때
+  //버튼에 마우스 hover하면 실행
+  prevbtn.addEventListener("mouseenter",function(){
+    stopIt();
+  })
+  nextbtn.addEventListener("mouseenter",function(){
+    stopIt();
+  })
+
+  //마우스 hover떼면 다시 실행
+  prevbtn.addEventListener("mouseleave",function(){
+    startIt();
+  })
+  nextbtn.addEventListener("mouseleave",function(){
+    startIt();
+  })
+
+  //click하면 앞/뒤로 이동
+  prevbtn.addEventListener("click",function(){
+    let prevNum= current===0? lastIndex: current-1;
+    moveDiv(prevNum)
+  })
+  nextbtn.addEventListener("click",function(){
+    let nextNum= current===lastIndex? 0: current+1;
+    moveDiv(nextNum)
+  })
+  
+  // 자동 이미지 전환 정지
+  function stopIt(){
+    clearInterval(timer);
+  }
+
+
+  //div를 이동시키는 함수
+  function moveDiv(left){
+    imgDivs.style.left= `${-(left*100)}%`
+    current= left;
+  }
+  //자동이미지 전환 실행
+  function startIt(){
+    // 3초마다 moveDiv()실행
+    timer=setInterval(function(){
+      /*
+      current가 0 이면 1, 1이면 2, 2면 3, 3이면 0으로 이동해야한다.
+      */
+     next = current===lastIndex? 0: current+1;
+      moveDiv(next)
+    },1000);
+  }
+
+  startIt();
+
+  //크기 지정;
+  imgDivs.style.width= `${imgs.length*100}%`;
+
+
+
+
+
+  // let i=0;
+  // setInterval(function(){
+  //   imgDivs.style.left = `-${i*100}%`;
+  //   i++
+  //   i= i>lastIndex? 0:i;
+  // },1000)
+  </script>
+
+</body>
+</html>

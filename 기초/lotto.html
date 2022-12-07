@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="wrap">
+    <h3>로또 번호 출력하기</h3>
+    <ul class="bluebg"></ul>
+  </div>
+
+  <script>
+
+    let lotto= [];
+    for (let i = 1; i < 46; i++) {
+        lotto.push(i);
+    }
+    // lotto는 나올수 있는 수 1 ~ 45
+
+    let result= [];
+    for(let i=0; i<6; i++){
+      let num = Math.floor(Math.random()*lotto.length);
+      result.push(lotto[num]);
+      // result는 lotto의 index가 될 값 0~44
+      // 44에서 아래 구문으로 인해 index가 하나 제거되면 곱해야할 숫자가 줄어든다
+      // ㄴindex가 줄어들면, array.length 도 줄어든다.
+
+      lotto.splice(num,1);
+      // 나온값 lotto의 index를 기반으로 lotto에서 나올 수 있는 숫자(이미 발생함) 1개 삭제
+    }
+
+  </script>
+
+</body>
+</html>

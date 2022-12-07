@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    
+    <header>
+        <div class="inner">
+            <ul id="icon">
+                <a href="#"><li class="wifi">관광지 무료 Wifi 안내</li></a>
+                <a href="#"><li class="tour">울산 시티투어 안내</li></a>
+            </ul>
+            <div id="ulsan"><h1>울산에 오신 것을 환영합니다</h1></div>
+            <h2>logo</h2>
+        </div>
+    </header>
+    <div id="contents">
+        <div class="img" >
+            <div onclick="name()">
+                <img src="./images/img_heauri.png" alt="울산의 마스코트 해울이" >
+            </div>
+            <div class="category view">
+                <ul>
+                    <li class="say-img">울산</li>
+                    <li class="say"><a href="#">추천</a></li>
+                    <li class="say"><a href="#">여행지</a></li>
+                    <li class="say"><a href="#">여행정보</a></li>
+                    <li class="say"><a href="#">여행이야기</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="join">
+            <h3 class="inner">울산 관광 회원가입</h3>
+        </div>
+        <form method="get" action="join.php" class="inner">
+            <h4>개인정보 입력</h4>
+            <div class="one">
+                <h5>아이디 및 비밀번호</h5>
+                <p>
+                    <input type="text" name="userId" placeholder="아이디"></lnput>
+                </p>
+                <p>
+                    <input type="password" name="userPass" placeholder="비밀번호"></input>
+                </p>
+                <p>
+                    <input type="password" name="pw2" requried placeholder="비밀번호 확인">
+                </p>
+            </div>
+                
+            <div class="two">
+                <h5>패스워드 분실시 질문</h5>
+                <p>
+                    <select name="pw-lost-Q" id="pwQ">
+                        <option value="a">내가 태어난 곳은?</option>
+                        <option value="a">내가 가장 좋아하는 색상은?</option>
+                        <option value="a">우리 어머니의 성함은?</option>
+                    </select>
+                </p>
+                <p>
+                    <input type="text" name="pw-lost-A" placeholder="패스워드 분실시 답변">
+                </p>
+            </div>
+
+            <div class="two">
+                <h5>인적 정보</h5>
+                  <p>
+                    남성<input type="radio" name="gender" value="M"></input>
+                    여성<input type="radio" name="gender" value="F"></input>
+                  </p>
+                  <p>
+                    <select name="userNumber1" id="" class="number">
+                        <option value="a">010</option>
+                        <option value="b">011</option>
+                        <option value="d">016</option>
+                        <option value="e">017</option>
+                        <option value="e">018</option>
+                        <option value="e">019</option>
+                    </select>
+                    -
+                    <input type="text" name="userNumber2" placeholder="0000"></lnput>
+                    -
+                    <input type="text" name="userNumber3" placeholder="0000"></lnput>
+                  </p>
+                  <p>
+                    <input type="text" name="year" placeholder="생년월일"></lnput>
+                    년
+                    <input type="text" name="month" placeholder=""></lnput>
+                    월
+                    <input type="text" name="day" placeholder=""></lnput>
+                    일
+                  </p>
+
+                <div class="btn-zip">
+                <p>
+                    <input type="submit" value="전송" class="btn"></input>
+                    <input type="reset" value="취소" class="btn"></input>
+                  </p>
+            </div>
+
+
+        </form>
+    </div>
+    <footer>
+        <div class="inner">
+            <h2></h2>
+            <ul>
+                <li><a href="#">개인정보 처리 방침</a></li>
+                <li><a href="#">저작권 정책</a></li>
+                <li><a href="#">이용안내</a></li>
+                <li><a href="#">웹 접근성 품질인증</a></li>
+            </ul>
+            <p>
+                대표전화 : 052-120
+            </p>
+            <address>
+                (44675) 울산광역시 남구 중앙로 201 (신정동)
+                Copyright © Ulsan Metropolitan City. All rights reserved.
+            </address>
+            <p class="notice">
+                본 사이트의 모든 내용들은 울산광역시의 허락없이 무단복제가 불가하며, 게시된 전자우편주소는 개인정보보호법 및 정보통신망법에 따라 무단 수집을 거부합니다
+            </p>
+        </div>
+        
+    </footer>
+
+    <script src="./js/script.js"></script>
+    
+
+</body>
+</html>

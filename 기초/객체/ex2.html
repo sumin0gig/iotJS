@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // let Accumulater={
+    //   startNum:1,
+    //   promptNum: prompt("??"),
+    //   read(){
+    //     return this.startNum + Number(this.promptNum)
+    //   },
+    // }
+
+      function Accumulater(startNum){
+        this.startNum= startNum;
+        // this.promptNum= prompt("?");
+        this.read= function(){
+          return this.startNum + Number(prompt("숫자를 입력하세요"))
+        }
+      }
+      let accumulater = new Accumulater(10);
+      console.log(accumulater.read());
+
+  </script>
+</body>
+</html>

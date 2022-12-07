@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Burgers(name,price,size){
+      return{
+        name,
+        price,
+        size,
+      }
+        // this.name=name
+        // this.price=price
+        // this.size=size
+    };
+
+    let burgers=[
+      new Burgers("새우버거",5000,"big"),
+      new Burgers("불고기버거",4500,"regular"),
+      new Burgers("쥬니어불고기버거",3500,"small"),
+      new Burgers("치즈버거",5500,"regular"),
+      new Burgers("스테이크버거",7000,"big"),
+      new Burgers("치킨버거",5500,"regular"),
+      new Burgers("야채버거",4500,"regular"),
+      new Burgers("쥬니어새우버거",3000,"small")
+    ];
+
+    for (let index = 0; index < array.length; index++) {
+      const element = array[index];
+      
+    }
+    // 1
+    let result1= burgers.filter(burger=>burger.size=="regular")
+    console.log(result1)
+    // 2
+    let result2= burgers.map(burger=>burger.name)
+    console.log(result2)
+    // 3
+    let result3= burgers.filter(i=>i.price >= 5000)
+    console.log(result3)
+    // 4
+    let result4= burgers.filter(i=>i.name == "스테이크버거")
+    console.log(result4)
+
+
+  </script>
+</body>
+</html>

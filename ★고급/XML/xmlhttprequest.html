@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // open()
+    // setRequestHeader()
+    // send()
+    const xhr = new XMLHttpRequest(); //객체 생성
+    xhr.open("GET","https://jsonplaceholder.typicode.com/posts")
+    xhr.setRequestHeader("content-type","application/json")
+    xhr.send();
+    xhr.onload= () =>{
+      if(xhr.status===200){
+        const res = JSON.parse(xhr.response);
+        console.log(res);
+      }else {
+		//응답 데이터가 정상적(200)이 아닐 경우 출력한다.
+        console.error(xhr.status, xhr.statusText)
+        //응답 상태 번호와 응답메시지를 출력한다.
+      }
+    }
+
+  </script>
+</body>
+</html>

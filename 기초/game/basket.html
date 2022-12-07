@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin: 0; padding: 0; box-sizing: border-box;}
+    body{
+      width: 1200px;
+      margin: 80px auto;
+      text-align: center;
+      color: #fff;
+    }
+    li{list-style: none;}
+    .orange{
+      background: orange;
+      height: 40vh;
+      display: flex;
+      flex-flow: column;
+      border: 1px solid #fff;
+      margin: 10px;
+      padding: 10px;
+    }
+    .orange ul{
+      display: flex;
+      justify-content: center;
+    }
+    .orange ul li{
+      width: 40%;
+      height: 180px;
+      border: 1px solid #fff;
+      margin: 20px;
+      padding: 50px;
+    }
+    .black{
+      background: black;
+      width: 50%;
+      line-height: 50px;
+      padding: 1%;
+      margin: 30px;
+      margin-left: 25%;
+    }
+    .no1{
+      width: 10%;
+      margin: 10px;
+    }
+    .h{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .red{
+      background: lightcoral;
+      height: 40vh;
+      flex-flow: row;
+    }
+    .btns1{
+      width: 50%;
+      padding: 50px;
+      display: flex;
+      justify-content: center;
+      flex-flow: column;
+    }
+    .btns2{
+      width: 50%;
+      padding: 50px;
+      display: flex;
+      justify-content: center;
+      flex-flow: column;
+    }
+    button{
+      background: #fff;
+      width: 50%;
+      height: 50px;
+      margin: 10px;
+      margin-left: 25%;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div id="wrap">
+    <div class="orange">
+      <div class="h">
+        남은 슛 횟수 <div class="black no1"></div>
+      </div>
+      <ul>
+        <li>컴퓨터 <div class="black no2"></div></li>
+        <li>사람 <div class="black no3"></div></li>
+      </ul>
+      <div class="announce"></div>
+    </div>
+    <div class="orange red">
+      <div class="btns1">
+        컴퓨터 <button onclick="gamestart()" >Click</button>
+      </div>
+
+      <div class="btns2">
+        사용자
+        <button onclick="score(2)">2점슛</button>
+        <button onclick="score(3)">3점슛</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+    let num= 15;
+    let num2= 0;
+    document.querySelector(".no1").innerHTML = num;
+    let comNum= 0;
+    document.querySelector(".no2").innerHTML = comNum;
+    let userNum= 0;
+    document.querySelector(".no3").innerHTML = userNum;
+    let announce= document.querySelector(".announce")
+
+    function gamestart(){
+      if(num==0 || num2==1){
+        document.querySelector(".no1").innerHTML = num;
+      }else{
+        let rand1= Math.round(Math.random());
+        let rand2= Math.floor(Math.random()*11);
+        num2++;
+        document.querySelector(".no1").innerHTML = num;
+        if(rand1==0){
+          if(rand2<4){
+            comNum+= 3;
+            announce.innerHTML =("컴퓨터가 3점 슛을 성공했습니다.")
+            document.querySelector(".no2").innerHTML = comNum;
+          }else{
+            announce.innerHTML =("컴퓨터가 3점 슛을 실패했습니다.")
+          }
+        }else {
+          if(rand2<6){
+            comNum+= 2;
+            announce.innerHTML =("컴퓨터가 2점 슛을 성공했습니다.")
+            document.querySelector(".no2").innerHTML = comNum;
+          }else {
+            announce.innerHTML =("컴퓨터가 2점 슛을 실패했습니다.")
+          }
+        }
+      }
+      if(num2==1){
+        document.querySelector(".btns1 button").disabled=true;
+        document.querySelectorAll(".btns2 button")[0].disabled=false;
+        document.querySelectorAll(".btns2 button")[1].disabled=false;
+      }
+    }
+
+    function score(shoot) {
+      if(num==0 || num2==0){
+      }else{
+        let rand= Math.floor(Math.random()*10);
+        num--;
+        num2--;
+        document.querySelector(".no1").innerHTML = num;
+
+        if(rand<Math.floor(1/shoot*10)){
+        userNum+= shoot;
+        announce.innerHTML =(`당신이 ${shoot}점 슛을 성공했습니다.`)
+        document.querySelector(".no3").innerHTML = userNum;
+        }else {
+          announce.innerHTML =(`당신이 ${shoot}점 슛을 실패했습니다.`)
+        }
+      }
+      if(num2==0){
+        document.querySelectorAll(".btns2 button")[0].disabled=true;
+        document.querySelectorAll(".btns2 button")[1].disabled=true;
+        document.querySelector(".btns1 button").disabled=false;
+      }
+      if(num==0 && num2==0){
+        let winner = comNum> userNum? "컴퓨터가 이겼습니다.": comNum < userNum? "당신이 이겼습니다.": "비겼습니다.";
+        announce.innerHTML += `<br>${winner}`;
+      }
+    }
+
+    
+  </script>
+</body>
+</html>

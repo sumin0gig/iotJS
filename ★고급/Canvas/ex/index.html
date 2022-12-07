@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      width: 100%;
+      max-width: 1800px;
+      margin: 0 auto;
+    }
+    canvas{background-color: #ccc;}
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <canvas></canvas>
+  </div>
+  <script>
+    const canvas= document.querySelector("canvas");
+    const ctx= canvas.getContext("2d");
+    canvas.width= window.innerWidth-100;
+    canvas.height= window.innerHeight-100;
+    let rightKeyActive= false;
+    let leftKeyActive= false;
+    let zKeyActive= false;
+
+    let animation;
+
+    let timer=0;
+    let state={
+      //speed
+      walk: 4,
+      // jump
+      jump: 8,
+      jumpHight: 700,
+      jumpTime: 30,
+    }
+
+    let bg={
+      x: (canvas.width-500)/2,
+      y: 200,
+      width: 500,
+      height: 700,
+      draw(){
+        ctx.fillStyle="rgba(0,0,0,.5)";
+        ctx.fillRect(0,800,canvas.width,300);
+        ctx.fillRect(this.x,this.y,this.width,this.height);
+      }
+    }
+
+    let user={
+      x: 100,
+      y: 700,
+      width: 100,
+      height: 100,
+      draw(){
+        ctx.clearRect(0,0,canvas.width, canvas.height);
+        bg.draw();
+        ctx.fillRect(this.x,this.y,this.width,this.height);
+      },
+    }
+    user.draw()
+    
+
+
+/************************선언********************************/
+
+
+/***********************Background***************************/
+
+    function keySubmit(){
+      window.addEventListener("keydown",function(e){
+        if(e.code=="ArrowRight"){rightKeyActive= true;}
+        if(e.code=="ArrowLeft"){leftKeyActive= true;}
+        if(e.code=="KeyZ"){zKeyActive= true;}
+      })
+     
+      window.addEventListener("keyup",function(e){
+        if(e.code=="ArrowRight"){rightKeyActive= false;}
+        if(e.code=="ArrowLeft"){leftKeyActive= false;}
+      })
+
+        if(zKeyActive){
+          user.y= Math.max(300, user.y-state.jump);
+          timer++;
+          console.log(timer);
+          user.draw()
+        }else{
+          if(user.y<=state.jumpHight){
+            user.y= user.y+state.jump;
+            user.draw()
+          };
+        }
+        if(timer>=state.jumpTime){
+          zKeyActive=false;
+          timer=0;
+        }
+
+        if(rightKeyActive){
+          user.x= Math.min(user.x+state.walk, canvas.width-user.width);
+          user.draw()
+        }
+        if(leftKeyActive){
+          user.x= Math.max(user.x-state.walk, 0);
+          user.draw()
+        }
+
+        animation= requestAnimationFrame(keySubmit)
+    }
+    keySubmit()
+
+  </script>
+</body>
+</html>

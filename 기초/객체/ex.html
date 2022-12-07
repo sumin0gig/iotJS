@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+<script>
+  function Calculators(num1,num2){
+      this.num1= num1;
+      this.num2= num2;
+      this.sum= function(){
+        return this.num1 + this.num2
+      }
+      this.mul= function(){
+        return this.num1 * this.num2
+      }
+  }
+
+  let calculator= new Calculators(10,20);
+  let result1= calculator.sum();
+  let result2= calculator.mul();
+
+  let calculator2= {
+    num1: 10,
+    num2: 30,
+    sum(){
+      return this.num1+this.num2;
+    },
+    mul(){
+      return this.num1*this.num2;
+    }
+  }
+  console.log(calculator2.sum())
+</script>
+</body>
+</html>

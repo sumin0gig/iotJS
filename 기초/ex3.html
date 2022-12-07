@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+let fruitType = prompt("찾으시는 과일이 있으신가요?")
+
+switch (fruitType) {
+    case '오렌지':
+        console.log('오렌지는 파운드 당 $0.59입니다.');
+        break;
+    case '사과':
+        console.log('사과는 파운드 당 $0.32입니다.');
+        break;
+    case '바나나':
+        console.log('바나나는 파운드 당 $0.48입니다.');
+        break;
+    case '체리':
+        console.log('체리는 파운드 당 $3.00입니다.');
+        break;
+    case '망고':
+        console.log('망고는 파운드 당 $0.56입니다.');
+        break;
+    case '파파야':
+        console.log('망고와 파파야는 파운드 당 $2.79입니다.');
+        break;
+    default:
+        console.log(`죄송합니다. ${fruitType}은 품절입니다.`);
+    }
+    console.log('더 필요한게 있으신가요?');
+
+
+
+    </script>
+</body>
+</html>

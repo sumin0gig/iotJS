@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    *{padding: 0; margin: 0; box-sizing: border-box;}
+    li{list-style: none;}
+    #open{
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    #tog{
+      width: 0;
+      height: 100vh;
+      background: beige;
+      float: left;
+      overflow: hidden;
+      transition: .5s;
+    }
+    #tog.on{
+      width: 300px;
+    }
+    #close{
+      width: 150px;
+      height: 30px;
+      background-color: brown;
+      color: #fff;
+      float: right;
+      margin-bottom: 10px;
+    }
+    #leftMenu{
+      width: 100%;
+      float: left;
+    }
+    h1{
+      margin-bottom: 10px;
+      background: #ccc;
+    }
+    #leftMenu li ul{
+      height: 0px;
+      transition: .5s;
+      background: #fff;
+      overflow: hidden;
+      padding-left: 40px;
+    }
+    #leftMenu li ul.overroll{
+      height: 100px;
+    }
+  </style>
+
+</head>
+<body>
+  <div id="wrap">
+    <div id="tog">
+      <div id="close">close</div>
+      <ul id="leftMenu">
+        <li>
+          <h1>1</h1>
+          <ul>
+            <li>11</li>
+            <li>12</li>
+            <li>13</li>
+            <li>14</li>
+          </ul>
+        </li>
+        <li>
+          <h1>2</h1>
+          <ul>
+            <li>21</li>
+            <li>22</li>
+            <li>23</li>
+            <li>24</li>
+          </ul>
+        </li>
+        <li>
+          <h1>3</h1>
+          <ul>
+            <li>31</li>
+            <li>32</li>
+            <li>33</li>
+            <li>34</li>
+          </ul>
+        </li>
+        <li>
+          <h1>4</h1>
+          <ul>
+            <li>41</li>
+            <li>42</li>
+            <li>43</li>
+            <li>44</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div id="open">open</div>
+  </div>
+</body>
+
+<script>
+  let openBtn = document.querySelector("#open")
+  let closeBtn =document.querySelector("#close")
+  let tog = document.querySelector("#tog")
+
+  openBtn.addEventListener("click",function(){
+    tog.classList.add("on");
+  })
+  closeBtn.addEventListener("click",function(){
+    tog.classList.remove("on");
+  })
+
+  let lis = document.querySelectorAll("#leftMenu > li") //클릭되는 부분
+  let lists = document.querySelectorAll("#leftMenu > li > ul") //열리는 부분
+
+  // for (let i = 0; i < lis.length; i++) {
+  //   lis[i].addEventListener("click",function(){
+  //     lists[i].classList.toggle("overroll");
+  //   })    
+  // }
+
+    /*
+    let lis = document.querySelectorAll("#leftMenu > ul > li"); //클릭되는 부분
+    let lists = document.querySelectorAll("#leftMenu ul ul"); //열리는 부분
+
+    lis.forEach((li,index) => {
+      li.addEventListener("click",function(){
+        
+        *
+        여기서부터 
+
+        lists.forEach((ul,ulindex)=>{ //열리는 부분의 v와 i
+          if(index != ulindex){ //만약 클릭되는 i가 열리는 부분의 i와 다르면
+          ul.classList.remove("on") // 그 열리는 부분에게서 on클래스를 제거해라
+          }
+        });
+        
+        클릭한 녀석을 제외하고 모두 on클래스 제거
+        *
+
+        lis[index].querySelector("ul").classList.toggle("on");
+      })
+    })
+    */
+  
+
+    
+  lis.forEach((v,i) => {
+    lis[i].addEventListener("click",function(){
+      lists.forEach((sv,si) => {
+        if(i != si){
+          sv.classList.remove("overroll");
+        }
+      });
+      lists[i].classList.toggle("overroll");
+    }) 
+  });
+
+
+
+</script>
+
+</html>

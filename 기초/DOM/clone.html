@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @import url('https://cdn.jsdelivr.net/npm/galmuri@latest/dist/galmuri.css');
+    body{
+      font-family: 'Galmuri7';
+      background: url(./엥.svg);
+    }
+
+  </style>
+</head>
+<body>
+  <div id="box1">
+    <h2>안녕하세요</h2>
+
+  </div>
+</body>
+<script>
+  let div1= document.querySelector("#box1");
+  let div2= div1.cloneNode(true);
+  div1.after(div2)
+</script>
+</html>

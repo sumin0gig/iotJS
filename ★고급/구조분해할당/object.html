@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    let obj1={
+      name: "green",
+      age: 30,
+      hasJob: true,
+    }
+    let {name,age,hasJob} = obj1;
+    console.log(name);
+    console.log(age);
+    console.log(hasJob);
+
+
+    let obj2 ={name2:"a", height:100, width:200};
+    let {name2, ...rest} = obj2;
+    console.log(name2);
+    console.log(rest);
+
+    function myFunc({name,width,height}){
+      console.log(name);
+      console.log(width);
+      console.log(height);
+    }
+    myFunc(obj2);
+  </script>
+</body>
+</html>

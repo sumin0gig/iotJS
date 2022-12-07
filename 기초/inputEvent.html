@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin: 0; padding: 0; box-sizing: border-box;}
+    header{
+      width: 100%;
+      line-height: 8vh;
+      font-size: 40px;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 2vh;
+      background: pink;
+    }
+    #content{
+      width: 100%; max-width: 800px; margin: 0 auto;
+      height: 20vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+    #announce{
+      display: flex;
+    }
+    #announce > div{
+      display: flex;
+      padding: 5px;
+    }
+    input{
+      line-height: 30px;
+      width: 300px;
+    }
+    button{
+      line-height: 30px;
+      width: 300px;
+    }
+
+  </style>
+</head>
+<body>
+  <header>유강남 왔으면 좋겠다</header>
+  <div id="content">
+    <div id="quset">
+      <h1></h1>
+    </div>
+    <input type="text" id="myinput" />
+    <div id="announce">
+      <div>
+        남은 시간: <div class="secondsDiv">0</div>초
+      </div>
+      <div>
+        점수: <div class="scoreDiv">0</div>점
+      </div>
+    </div>
+    <button onclick="scoreUp()">게임 시작</button>
+  </div>
+  
+  <script>
+    const input =document.querySelector("#myinput")
+    let arr =["양의지","유강남","박세혁","박동원"];
+    input.addEventListener("input",function(){
+    });
+
+    const h1Ad= document.querySelector("h1")
+    const secondAd= document.querySelector(".secondsDiv")
+    const scoreAd= document.querySelector(".scoreDiv")
+    const btnAd= document.querySelector("button")
+    let score=0;
+    let timer;
+    let i=60;
+
+    //게임 시작 버튼
+    let randNum=Math.floor(Math.random()*arr.length);
+    h1Ad.innerHTML= arr[randNum];
+    function scoreUp(){
+      btnAd.innerHTML="제출";
+      clearInterval(timer);
+      timer= setInterval(function(){
+        if(i==0){
+          i=0;
+          btnAd.disabled="true";
+        }else{
+          i--;
+        }
+        secondAd.innerHTML= i;
+      },1000)
+
+      if(input.value==arr[randNum]){
+        score++
+        scoreAd.innerHTML =score;
+        randNum= Math.floor(Math.random()*arr.length);
+        h1Ad.innerHTML= arr[randNum];
+      }      
+    }
+    
+</script>
+</body>
+</html>

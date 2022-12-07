@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 유효범위 스코프 {}블럭 
+        // let은 블럭 스코프이다. var는 함수 스코프이다.
+        // >블럭 안에서 선언한 블럭 스코프는 해당 블럭 안에서만 사용할 수 있다.
+        // >함수 안에서 선언한 함수 스코프는 해당 함수 안에서만 사용할 수 있다.
+        // 글로벌 변수는 어디에서든 사용할 수 있다.
+        var str = "green";
+        var str = "abc";
+        let abc = "aaa";
+        console.log(str);
+        {
+            let aaa = 10;
+            var bbb = 11;
+        }
+        console.log(bbb);
+
+
+        // var는 호이스팅(var로 선언한 변수가 우선순위가 높아지는 것)이 발생한다.
+        // var는 메모리에 지정한 값의 주소를 끌어오기 때문에 중첩하여 작성하여도 오류가 발생하지 않는다.
+        // 변수를 먼저 지정하고 그 값을 끌어와야한다. 그렇지 않으면 오류가 발생한다.
+        // 
+
+    </script>
+    
+</body>
+</html>

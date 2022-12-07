@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{margin: 0; padding: 0; box-sizing: border-box;}
+    .animated-title {
+      font-size:60px;
+      font-weight:300; 
+      position: relative; 
+      width: 100%;
+      max-width:100%; 
+      height: auto; 
+      padding:100px 0; 
+      overflow:hidden; }
+    .animated-title .track {
+      position: absolute;
+      white-space: nowrap;
+      will-change: transform;
+      animation: marquee 3s linear infinite; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+  </style>
+</head>
+<body>  
+    <div class="animated-title">
+      <div class="track">
+        <div class="content">HOMERUN HOMERUN HOMERUN HOMERUN HOMERUN HOMERUN HOMERUN HOMERUN HOMERUN HOMERUN HOMERUN HOMERUN </div>
+      </div>
+    </div>
+    <marquee>글자</marquee>
+
+</body>
+</html>

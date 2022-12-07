@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>ID <input name="userName" id="userId" type="text"></p>
+    <p>PW <input name="userPassword" id="userPw" type="text"></p>
+    <p><button onclick="idpwCheck()">확인</button></p>
+    <script>
+
+        function idpwCheck(){
+        let inputId =document.querySelector("#userId").value;
+        let inputPw =document.querySelector("#userPw").value;
+        console.log(inputId +"와 "+ inputPw);
+
+            if(inputId=="bella" && inputPw=="1234"){
+                alert("로그인에 성공했습니다.");
+            }else if(inputId != "bella"){
+                alert("ID가 다릅니다.");
+            }else {
+                alert("PW가 다릅니다.");
+            };
+            console.log(inputId +"와 "+ inputPw);
+
+            document.querySelector("#userId").value = "";
+            document.querySelector("#userPw").value = "";
+            console.log(inputId +"와 "+ inputPw);
+
+            // 입력된 값을 지워주는 역할을 한다.
+        }
+
+
+
+
+        
+    </script>
+
+</body>
+</html>

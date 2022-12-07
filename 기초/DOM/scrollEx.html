@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{margin: 0; padding: 0; box-sizing: border-box;}
+        div{
+            width: 100%;
+            height: 100vh;
+        }
+        div:nth-child(2){
+            background: lightblue;
+        }
+        div:nth-child(3){
+            background-color: lavender;
+        }
+        div:nth-child(4){
+            background-color: lemonchiffon;
+        }
+        #menu{
+            position: fixed;
+            width: 200px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        #menu li{
+            list-style: none;
+            color: #fff;
+            padding-left: 30px;
+            line-height: 40px;
+            transition: .5s;
+            font-size: 24px;
+            text-shadow: black 1px 1px 1px;
+        }
+        #menu li.on{
+            font-size: 32px;
+        }
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li>menu1</li>
+        <li>menu2</li>
+        <li>menu3</li>
+    </ul>
+    <div>box1</div>
+    <div>box2</div>
+    <div>box3</div>
+  
+    <script>
+      let lis = document.querySelectorAll("li"); //li배열을 함수 lis에 할당
+      let wh = window.innerHeight; //화면 100%의 높이 값을 함수 wh에 할당
+      
+      // lis[0].addEventListener("click",function(){
+      //   window.scrollTo({top:0, behavior:"smooth"});
+      // })
+      // lis[1].addEventListener("click",function(){
+      //   window.scrollTo({top:wh, behavior:"smooth"});
+      // })
+      // lis[2].addEventListener("click",function(){
+      //   window.scrollTo({top:wh*2, behavior:"smooth"});
+      // })
+
+      for (let i = 0; i < lis.length; i++) {
+        lis[i].addEventListener("click",function(){
+          window.scrollTo({top:i*wh, behavior:"smooth"});
+        }) 
+      }
+
+      //스크롤 값에 따라서 해당하는 li에게 클래스를 붙인다.
+      //0~1000미만은 1번째 li에 on 지정
+      document.addEventListener("scroll",function(){
+        let sct = document.documentElement.scrollTop;
+        console.log(sct);  
+      })
+      for (let i = 0; i < lis.length; i++) {
+          if(sct>=wh*i && sct<wh*(i+1)){
+            lis.forEach(li => li.classList.remove("on"));
+            lis[i].classList.add("on");
+          }
+        }
+
+    </script>
+</body>
+</html>

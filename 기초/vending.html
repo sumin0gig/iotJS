@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div>
+        <div>
+            A음료수 : 500원 <br/>
+            B음료수 : 700원 <br/>
+            C음료수 : 1000원
+
+        </div>
+        <button onclick="inputMoney(100)">100</button>
+        <button onclick="inputMoney(500)">500</button>
+        <button onclick="inputMoney(1000)">1000</button>
+        <p id="money"></p>
+        <p id="select"></p>
+    </div>
+
+    <script>
+        // 버튼 클릭하면 money에 해당 버튼의 금액을 더해줌
+        // money는 #money에 나타남
+        // 금액에 따라 살 수있는 음료수 종류는 #select에 나타남
+        let money = 0;
+        function inputMoney(inputM){
+            money = money + inputM;
+            document.querySelector("#money").innerHTML = `현재 소지금은 ${money}원 입니다.`;
+            selectCh();
+        }
+        
+    
+        
+        function selectCh(){
+            let p ="";
+            if( money>=500 ){
+                p = p+"A음료수";
+                if(money>=700){
+                    p = p+", B음료수";
+                    if(money>=1000){
+                        p = p+", C음료수";
+                    }
+                }
+                p = p+"를 살 수 있습니다.";
+            }else{ p="돈이 모자랍니다."}
+            document.querySelector("#select").innerHTML = `${p}` ;
+        }
+        
+
+
+    </script>
+
+
+</body>
+</html>

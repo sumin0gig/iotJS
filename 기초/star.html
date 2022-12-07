@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div>
+        <ul>
+            
+        </ul>
+    </div>
+
+    <script>
+
+        
+
+        let star = "";
+        for(let i=1;i<=5;i++){ //i가 1에서 5가 될때까지 총 5번 작성한다
+            star= star+`<p>` // p로 감싸서 구분한다
+
+            for(let j=5;j>=i;j--){ //j가 5면 1번 4면 2번...작성한다
+                // j>=i에서 j가 5라면 구문을 true로 반환할 수 있는 i = 1,2,3,4,5 = ******
+                // j가 4라면 구문을 true로 반환할 수 있는 i = 1,2,3,4 = ****
+                star = star + `*` // "*"을 작성한다.
+            }
+
+            star = star + `</p>`
+        }
+        document.querySelector("ul").innerHTML = star;
+
+
+
+
+
+    </script>
+
+</body>
+</html>

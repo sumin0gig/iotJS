@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        #div-box{
+            width: 150px;
+            height: 150px;
+            background-color: orange;
+        }
+        .no2{
+            display: none;
+        }
+    </style>
+
+</head>
+
+<body>
+    <button class="no1" onclick="color1()">color-change</button>
+    <button class="no2" onclick="color2()">color-change</button>
+    <div id="div-box"></div>
+
+    <script>
+        function color1(){
+            document.querySelector("#div-box").style.backgroundColor = "blue";
+            document.querySelector(".no1").style.display = "none";
+            document.querySelector(".no2").style.display = "block";
+        }
+        function color2(){
+            document.querySelector("#div-box").style.backgroundColor = "orange";
+            document.querySelector(".no1").style.display = "block";
+            document.querySelector(".no2").style.display = "none";
+        }
+
+        
+
+    </script>   
+
+</body>
+</html>

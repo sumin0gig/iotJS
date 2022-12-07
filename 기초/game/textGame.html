@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      text-align: center;
+      line-height: 32px;
+    }
+    *{margin: 0; padding: 0; box-sizing: border-box;}
+    #header{
+      background: blueviolet;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+    #text{
+      font-size: 32px;
+      color: blueviolet;
+      padding: 20px 0;
+    }
+    p{
+      padding: 10px;
+    }
+    button{
+      width: 200px;
+      line-height: 40px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="header">
+    아자게임
+  </div>
+  <div id="">
+    <div id="text">
+      display
+    </div>
+    <p><input type="text" id="inputText"></p>
+    <p>
+      남은시간 : <span id="time">0</span>초
+      점수 : <span id="score">0</span>점
+    </p>
+    <p>
+      <button id="gameBtn">게임시작</button>
+      <button id="clearBtn">재시작</button>
+    </p>
+  </div>
+  <div>
+    <input type="text" id="inputArr">
+    <button id="admBtn">추가</button>
+  </div>
+  <script>
+    const displayText= document.querySelector("#text");
+    const inputText= document.querySelector("#inputText");
+    const timeText= document.querySelector("#time");
+    const scoreText= document.querySelector("#score");
+    const gameBtn= document.querySelector("#gameBtn");
+    const clearBtn= document.querySelector("#clearBtn");
+    const plusArr= document.querySelector("#inputArr");
+    const admBtn= document.querySelector("#admBtn")
+
+    //
+    let score= 0;
+    let time= 20;
+    let isPlaying;
+    let timeInterval;
+    let texts=[];
+    let randomNum= Math.floor(Math.random()*texts.length)
+    
+
+    //arr추가
+    admBtn.addEventListener("click",function(){
+      texts.push(plusArr.value);
+      plusArr.value="";
+      console.log(texts);
+    })
+
+
+    // 버튼을 클릭하면 게임 시작
+    gameBtn.addEventListener("click",function(){
+      texts[randomNum];
+      displayText.innerHTML= texts[randomNum]
+      if(isPlaying){return;}
+      gameBtn.innerHTML= "게임중";
+      isPlaying= true;
+      timeText.innerHTML= time;
+      timeInterval= setInterval(timer,1000);
+    })
+    function timer(){
+        time>0? time--: isPlaying= false;
+        timeText.innerHTML =time;
+        if(isPlaying==false){
+          gameBtn.innerHTML= "게임종료";
+          gameBtn.disabled= true;
+          clearInterval(timeInterval);
+        }
+      }
+      inputText.addEventListener("input",function(){
+        if(!isPlaying){return;}
+        if(inputText.value=== displayText.innerHTML){
+          inputText.value ="";
+          score+=10;
+          scoreText.innerHTML =score;
+          randomNum= Math.floor(Math.random()*texts.length)
+          displayText.innerHTML =texts[randomNum];
+          
+        }
+      })
+
+    clearBtn.addEventListener("click",function(){
+      clearInterval(timer());
+      isPlaying=true;
+
+    })
+  </script>
+</body>
+</html>

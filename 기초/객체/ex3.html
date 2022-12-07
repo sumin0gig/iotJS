@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function Students(name,age,score1,score2){
+      this.name= name;
+      this.age= age;
+      this.score1= score1;
+      this.score2= score2;
+      this.total= function(){
+        return this.score1 + this.score2
+      }
+    }
+
+    let student1 = new Students("green",22,85,75)
+    console.log(student1.total())
+    let student2 = new Students("blue",25,80,60)
+    console.log(student2.total())
+
+  
+
+  </script>
+</body>
+</html>

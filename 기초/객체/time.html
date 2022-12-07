@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //date객체를 숫자로 변경해 시간차를 측정하기
+    let start= new Date();
+    for (let i = 0; i < 100000; i++) {
+      let something= i*i;
+    }
+    let end= new Date();
+    let time= end-start;
+    console.log(`반복문을 도는데 ${time}ms가 걸렸습니다.`);
+
+
+    let firstDay= new Date("2022-11-14");
+    let nowDay= new Date();
+    let firstTime= firstDay.getTime();
+    let todayTime= nowDay.getTime();
+    let dayday= Math.floor((todayTime-firstTime)/(1000*60*60*24));
+    console.log(`${firstDay.toLocaleDateString()}부터 ${dayday}일이 지났습니다.`);
+
+    let someDay= new Date(2022,09,10);
+    someDay.setDate(15);
+    console.log(someDay.toLocaleDateString());
+  </script>
+</body>
+</html>

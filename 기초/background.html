@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{padding: 0; margin: 0; box-sizing: border-box;}
+        body{
+            width: 40%;
+            margin: 0 auto;
+        }
+        div{
+            background-color: beige;
+            height: 200px;
+        }
+        ul{
+            display: flex;
+            justify-content: space-between;
+        }
+        button{
+            width: 23%;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <ul>
+        <button onclick="background(`orange`)">🍊</button>
+        <button onclick="background(`purple`)">🍇</button>
+        <button onclick="background(`lightgreen`)">🍈</button>
+        <button onclick="backColor()">❓</button>
+    </ul>
+    <p></p>
+    <script>
+        function background(color) {
+            document.querySelector("div").style.backgroundColor = color;
+        }
+
+        function backColor() {
+            let div = document.querySelector('div');
+            // let bgColor = div.style.backgroundColor;             //html에 작성된 style을 얻어온다.
+            let bgColor = window.getComputedStyle(div).getPropertyValue(`backgrond-color`);
+            alert(bgColor);
+
+
+            // getBgStyle= getComputedStyle(document.querySelector("div")) //div의 스타일을 얻어온다
+            // bgColorCode= getBgStyle.getPropertyValue('background-color') //스타일 중 backgrond-color 의 값을 얻어온다
+            // document.querySelector("p").innerHTML = bgColorCode;        //위에서 구한 값을 p에 입력한다.
+        }
+
+    </script>
+</body>
+</html>

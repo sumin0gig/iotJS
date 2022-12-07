@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let fruits = ["🍈","🍑","🍐","🥝","🍇"];
+        console.log(fruits);
+        console.log(fruits[0]);
+        console.log(fruits.length);
+        fruits[fruits.length] = "🍋";
+        console.log(fruits);
+        fruits[0] = "🍓";
+        console.log(fruits);
+
+        let arr=["a","b","c","d","e"];
+        for(let i=0; i<arr.length; i++){
+            console.log(arr[i]);
+        }
+
+        for(let i of arr){
+            console.log(i);
+        }
+
+        arr.forEach(i=>{
+    	console.log(i);
+	    })
+
+    </script>
+</body>
+</html>

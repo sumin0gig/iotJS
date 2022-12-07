@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box1" class="divbox">box1입니다.</div>
+    <div id="box2" class="divbox">box2입니다.</div>
+    <p>p입니다.</p>
+    <script>
+        //1개만 선택
+        // document.getElementById("id명 ex) box1")
+        // document.querySelector("css 선택자; ex) #box1")
+        
+        //복수 선택
+        // document.getElementsByClassName("class명") -html 컬렉션(유사배열)
+        // document.getElementsByTagName -html 컬렉션(유사배열)
+        // document.querySelectorAll("css 선택자") -노드리스트(유사배열)
+        document.getElementsByTagName("p")[0].innerHTML = "pp"
+
+    </script>
+</body>
+</html>

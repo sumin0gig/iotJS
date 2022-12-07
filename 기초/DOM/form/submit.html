@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form action="join.php" method="get" onsubmit="return formCheck()" name="my_form";>
+    <p>ID <input type="text" id="userId" name="userId"/></p>
+    <p>PW <input type="text" id="userPw" name="userPw"/></p>
+    <p><button type="submit">전송</button></p>
+  </form>
+  <script>
+    document.querySelector("form").addEventListener("submit",function(e){
+      e.preventDefault()
+    });
+    const form= document.forms.my_form;
+    const id= form.userId;
+    const pw= form.userPw;
+    function formCheck(){
+      if(id.value.length >=5){
+        if(pw.value.length >=5){
+          let newArr= pw.value.split("");
+          console.log(newArr);
+          let isNum = false;
+          newArr.forEach(i => {
+            if(!isNaN(Number(i))){
+              isNum= true;
+            }
+          });
+          if(isNum){
+            console.log("잘 입력했습니다.")
+          }else{
+            console.log("숫자를 포함하고 있지 않습니다.");
+          }
+        }else{
+          console.log("비밀번호 글자수 부족");
+        }
+      }else{
+        console.log("아이디 글자수 부족");
+      }
+
+    }
+  </script>
+</body>
+</html>

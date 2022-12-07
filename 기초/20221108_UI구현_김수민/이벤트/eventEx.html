@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        div{
+            width: 100%;
+            height: 100vh;
+        }
+        .bg1{
+            background: beige;
+        }
+        .bg2{
+            background: orange;
+        }
+        .bg3{
+            background: lightblue;
+        }
+        ul{
+            position: fixed;
+            top: 50%;
+            left: 5%;
+        }
+    </style>
+
+</head>
+<body>
+    
+    <div class="bg1"></div>
+    <div class="bg2"></div>
+    <div class="bg3"></div>
+    <ul>
+        <li class="cl1">1은 베이지</li>
+        <li class="cl2">2는 오렌지</li>
+        <li class="cl3">3은 블루</li>
+    </ul>
+
+    <script>
+        let li1= document.querySelector("li.cl1")
+        let li2= document.querySelector("li.cl2")
+        let li3= document.querySelector("li.cl3")
+        li1.addEventListener("click",function(){
+            window.scrollTo({top:0, behavior:"smooth"})
+        })
+        li2.addEventListener("click",function(){
+            window.scrollTo({top:977, behavior:"smooth"})
+        })
+        li3.addEventListener("click",function(){
+            window.scrollTo({top:1954, behavior:"smooth"})
+        })
+    </script>
+
+</body>
+</html>

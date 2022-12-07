@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>가위바위보</title>
+</head>
+<body>
+  <!-- <script>
+    let pr = prompt("가위바위보","가위")
+    let str =""
+    let prr=""
+    if(pr == "가위"|| pr == "바위" || pr == "보" ){
+      let i=(Math.floor(Math.random()*3))
+      switch (i) {
+        case 0:
+          str="가위"
+          break;
+        case 1:
+          str="바위"
+          break;
+        case 2:
+          str="보"
+          break;
+      }
+      prr= prr+`당신:${pr} 컴퓨터:${str} `
+      if(pr==str){
+        prr= prr+`비겼습니다.`
+      }else if((pr=="가위"&&str=="바위")||(pr=="바위"&&str=="보")||(pr=="보"&&str=="가위")){
+        prr= prr+`졌습니다.`
+      }else{
+        prr= prr+`이겼습니다.`
+      }
+      console.log(prr);
+    }else {
+      console.log("잘못 입력하셨습니다.");
+    }
+  </script> -->
+<script>
+  let rps= prompt("가위,바위,보 중 하나를 입력하세요","가위");
+  if(rps!= "가위"&&rps!="바위"&&rps!="보"){
+    console.log("잘못 입력하셨습니다.");
+  }else{
+    rpsGame(rps);
+  }
+  //컴퓨터의 랜덤 가위,바위,보를 지정
+  function rpsRandom() {
+    let num =Math.floor(Math.random()*3);
+    let result= num == 0? "바위" : num == 1? "가위" : "보"; //삼항연산자
+    return result;
+  }
+  
+//
+function rpsGame(rps){
+  let com_rps = rpsRandom();
+  console.log(`당신: ${rps}, 컴퓨터: ${com_rps}`);
+  if(rps == com_rps){
+    console.log(`비겼습니다.`)
+  }else if(rps=="가위"&&com_rps=="보" || rps=="바위"&&com_rps=="가위" ||  rps=="보"&&com_rps=="가위"){
+    console.log(`당신이 이겼습니다.`);
+  }else{
+    console.log(`컴퓨터가 이겼습니다.`);
+  }
+}
+
+
+</script>
+</body>
+</html>

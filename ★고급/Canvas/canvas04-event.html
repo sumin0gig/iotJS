@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    canvas{background-color: #ccc;}
+    button{outline: none; border: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    .color-btn[data-value="red"]{background: red;}
+    .color-btn[data-value="green"]{background: green;}
+  </style>
+</head>
+<body>
+  <canvas id="canvas" width="1000" height="300"></canvas>
+  <button onclick="changeColor(`black`)">Black</button>
+  <button onclick="changeColor(`red`)">Red</button>
+  <button onclick="changeColor(`green`)">Green</button>
+  <button onclick="changeColor(`blue`)">Blue</button>
+  <button id="clear">Clear</button>
+  <script>
+    const canvas= document.querySelector("#canvas")
+    const ctx= canvas.getContext("2d");
+    let drawingMode; //true일때만 작성
+    function changeColor(colorName){
+      ctx.strokeStyle= colorName
+    }
+    ctx.lineWidth= 30;
+    ctx.lineCap= "round";
+
+
+    function downHandler(){
+      drawingMode= true;
+    }
+    function upHandler(){
+      drawingMode= false;
+    }
+    function moveHandler(e){
+      if(!drawingMode) return;
+      let x= e.pageX;
+      let y= e.pageY;
+      ctx.beginPath();
+      ctx.moveTo(x,y);
+      ctx.lineTo(x,y)
+      ctx.stroke();
+    }
+    canvas.addEventListener("mousedown", downHandler)
+    canvas.addEventListener("mouseup", upHandler)
+    canvas.addEventListener("mousemove",moveHandler)
+
+    const clearBtn= document.querySelector("#clear")
+    clearBtn.addEventListener("click",function(){
+      ctx.clearRect(0,0,1000,300)
+    })
+
+  
+  </script>
+</body>
+</html>
